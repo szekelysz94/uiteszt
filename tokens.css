@@ -1,0 +1,24 @@
+/*
+ * Design tokens pulled from Figma — file "Test" (UkG1UYplYmCfvrO4EiS0GQ), node 1:2.
+ * Names match the Figma variable / style names one-to-one.
+ */
+:root {
+  /* Colors */
+  --card-bg: #e8e1e1;
+  --button-bg: #1950dd;
+  --text-bg: #ffffff;
+
+  /* Corner radii */
+  --card-corner: 32px;
+  --button-corner: 999px;
+
+  /* Text style: button-typo — Inter Medium 16, letter-spacing 0 */
+  --button-typo-family: "Inter", system-ui, sans-serif;
+  --button-typo-weight: 500;
+  --button-typo-size: 16px;
+  --button-typo-line-height: normal;
+  --button-typo-letter-spacing: 0;
+
+  /* Effect style: button-shadow — drop shadow #1950DD80, x 0, y 5, blur 5, spread 0 */
+  --button-shadow: 0 5px 5px 0 rgba(25, 80, 221, 0.5);
+}

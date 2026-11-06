@@ -5,7 +5,7 @@
 :root {
   /* Colors */
   --card-bg: #e8e1e1;
-  --button-bg: #1950dd;
+  --button-bg: #dd1919; /* changed to red on request; Figma value is #1950dd */
   --text-bg: #ffffff;
 
   /* Corner radii */
@@ -19,6 +19,7 @@
   --button-typo-line-height: normal;
   --button-typo-letter-spacing: 0;
 
-  /* Effect style: button-shadow — drop shadow #1950DD80, x 0, y 5, blur 5, spread 0 */
-  --button-shadow: 0 5px 5px 0 rgba(25, 80, 221, 0.5);
+  /* Effect style: button-shadow — drop shadow x 0, y 5, blur 5, spread 0 at 50% of the button color
+     (Figma value is #1950DD80; tinted red to match the red button) */
+  --button-shadow: 0 5px 5px 0 rgba(221, 25, 25, 0.5);
 }

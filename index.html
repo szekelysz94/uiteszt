@@ -6,7 +6,7 @@
     <title>Landing Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -14,6 +14,69 @@
       <section class="card" aria-label="Card">
         <button class="button" type="button">Button</button>
       </section>
+
+      <div class="returns-demo">
+        <section class="returns-card" aria-labelledby="returns-card-title">
+          <h2 class="returns-card__title" id="returns-card-title">Earn a return every day</h2>
+          <p class="returns-card__body">
+            Turn on Wise Assets to earn a return daily and spend it instantly.<sup>2</sup><br />
+            <a class="returns-card__link" href="#">Find out more</a>
+          </p>
+          <a class="returns-card__chip" href="#">
+            Provided by Wise Assets Europe
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M1.5 8h12.5M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+
+          <div class="returns-card__stage">
+            <div class="returns-card__pill">
+              <span class="returns-card__rate" data-rate="3.58" aria-label="3.58% return in US dollars">3.58%</span>
+              <span class="returns-card__badges" aria-hidden="true">
+                <svg class="returns-card__flag" viewBox="0 0 64 64">
+                  <defs>
+                    <clipPath id="rc-flag-clip"><circle cx="32" cy="32" r="32" /></clipPath>
+                    <pattern id="rc-stars" width="6" height="5.6" patternUnits="userSpaceOnUse">
+                      <circle cx="1.6" cy="1.4" r="0.9" fill="#fff" />
+                      <circle cx="4.6" cy="4.2" r="0.9" fill="#fff" />
+                    </pattern>
+                  </defs>
+                  <g clip-path="url(#rc-flag-clip)">
+                    <rect width="64" height="64" fill="#fff" />
+                    <g fill="#e8293b">
+                      <rect y="0" width="64" height="4.92" />
+                      <rect y="9.85" width="64" height="4.92" />
+                      <rect y="19.69" width="64" height="4.92" />
+                      <rect y="29.54" width="64" height="4.92" />
+                      <rect y="39.38" width="64" height="4.92" />
+                      <rect y="49.23" width="64" height="4.92" />
+                      <rect y="59.08" width="64" height="4.92" />
+                    </g>
+                    <rect width="34" height="34.46" fill="#2d3a8c" />
+                    <rect width="34" height="34.46" fill="url(#rc-stars)" />
+                  </g>
+                </svg>
+                <span class="returns-card__mark">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <path d="M7 21L21 7M10 7h11v11" stroke="#21231d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <button class="returns-card__pause" type="button" aria-label="Pause animation" aria-pressed="false">
+            <svg class="icon-pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+              <rect x="2" y="1" width="3" height="12" rx="1" fill="currentColor" />
+              <rect x="9" y="1" width="3" height="12" rx="1" fill="currentColor" />
+            </svg>
+            <svg class="icon-play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+              <path d="M3 1.5v11l9.5-5.5z" fill="currentColor" />
+            </svg>
+          </button>
+        </section>
+      </div>
     </main>
+    <script type="module" src="/returns-card.js"></script>
   </body>
 </html>

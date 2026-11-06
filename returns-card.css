@@ -1,0 +1,273 @@
+/*
+ * "Earn a return every day" card — recreated from a screenshot of wise.com.
+ * Values were measured from a ~1.5x screenshot and converted to CSS px.
+ */
+.returns-card {
+  --rc-bg: var(--card-bg); /* from tokens.css (Figma) */
+  --rc-ink: #21231d;
+  /* Chip is the card color lifted 30% toward white (matches the original's ratio). */
+  --rc-chip-bg: color-mix(in srgb, var(--rc-bg), #ffffff 30%);
+  --rc-chip-bg-hover: color-mix(in srgb, var(--rc-bg), #ffffff 50%);
+  --rc-radius: 32px;
+  --rc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 532px;
+  min-height: 737px;
+  padding: 32px 36px;
+  background: var(--rc-bg);
+  border-radius: var(--rc-radius);
+  color: var(--rc-ink);
+  font-family: "Inter", system-ui, sans-serif;
+  overflow: hidden;
+}
+
+/* Section backdrop the card overlaps on the site: green top, white bottom. */
+.returns-demo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 11px 4px 6px;
+  background: linear-gradient(to bottom, #b1e47d 0 47%, transparent 47%);
+}
+
+.returns-card__title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.returns-card__body {
+  max-width: 440px;
+  margin: 24px 0 0;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.returns-card__body sup {
+  font-size: 0.65em;
+  font-weight: 600;
+  line-height: 0;
+  vertical-align: 0.6em;
+}
+
+.returns-card__link {
+  display: inline-block;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.returns-card__link:hover {
+  text-decoration-thickness: 3px;
+}
+
+.returns-card__chip {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  margin-top: 24px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--rc-chip-bg);
+  color: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.returns-card__chip:hover {
+  background: var(--rc-chip-bg-hover);
+}
+
+.returns-card__chip svg {
+  flex: none;
+  transition: transform 0.2s var(--rc-ease);
+}
+
+.returns-card__chip:hover svg {
+  transform: translateX(3px);
+}
+
+.returns-card__link:focus-visible,
+.returns-card__chip:focus-visible,
+.returns-card__pause:focus-visible {
+  outline: 2px solid var(--rc-ink);
+  outline-offset: 3px;
+}
+
+/* The stage keeps the pill centred in the space under the copy. */
+.returns-card__stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.returns-card__pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 88px;
+  padding: 12px 12px 12px 28px;
+  border-radius: 999px;
+  background: var(--rc-ink);
+  animation: rc-pill 6s var(--rc-ease) infinite;
+}
+
+.returns-card__rate {
+  color: var(--rc-bg);
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.returns-card__badges {
+  display: flex;
+  align-items: center;
+}
+
+.returns-card__flag,
+.returns-card__mark {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.returns-card__flag {
+  display: block;
+  animation: rc-badge 6s var(--rc-ease) infinite;
+}
+
+.returns-card__mark {
+  display: grid;
+  place-items: center;
+  margin-left: -21px;
+  border: 4px solid var(--rc-ink);
+  background: var(--rc-bg);
+  animation: rc-badge 6s var(--rc-ease) 0.12s infinite;
+}
+
+.returns-card__pause {
+  position: absolute;
+  right: 22px;
+  bottom: 26px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid rgba(33, 35, 29, 0.12);
+  border-radius: 50%;
+  background: #ffffff;
+  color: #868685;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(33, 35, 29, 0.15);
+}
+
+.returns-card__pause:hover {
+  color: var(--rc-ink);
+}
+
+.returns-card__pause .icon-play {
+  display: none;
+}
+
+.returns-card.is-paused .returns-card__pause .icon-play {
+  display: block;
+}
+
+.returns-card.is-paused .returns-card__pause .icon-pause {
+  display: none;
+}
+
+.returns-card.is-paused .returns-card__pill,
+.returns-card.is-paused .returns-card__flag,
+.returns-card.is-paused .returns-card__mark {
+  animation-play-state: paused;
+}
+
+/* Pill slides in, holds while the rate counts up, then slides out. */
+@keyframes rc-pill {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  10%,
+  88% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+}
+
+@keyframes rc-badge {
+  0%,
+  6% {
+    transform: scale(0.6) rotate(-20deg);
+  }
+  18%,
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .returns-card__pill,
+  .returns-card__flag,
+  .returns-card__mark {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .returns-card {
+    min-height: 600px;
+    padding: 24px;
+  }
+
+  .returns-card__title {
+    font-size: 26px;
+  }
+
+  .returns-card__body {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .returns-card__chip {
+    font-size: 14px;
+  }
+
+  .returns-card__pill {
+    height: 72px;
+    padding: 8px 8px 8px 20px;
+  }
+
+  .returns-card__rate {
+    font-size: 36px;
+  }
+
+  .returns-card__flag,
+  .returns-card__mark {
+    width: 56px;
+    height: 56px;
+  }
+}
